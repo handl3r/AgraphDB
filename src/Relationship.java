@@ -44,9 +44,9 @@ public class Relationship {
                 for (int i = 1; i <= numberObject; i++) {
                     //take data from file
 
-                    Person person = new Person();// make a person to keep data
+                    Person person = null;
 
-                    Event event = new Event();
+                    Event event = null;
 
                     Relationship relationship = new Relationship(person,event,type);
                     
@@ -62,5 +62,9 @@ public class Relationship {
                 break;
         }
 
+    }
+    public Triple[] toTriple(){
+        /// de sau
+        return null;
     }
 }

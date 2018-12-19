@@ -61,4 +61,10 @@ public class ParentObject {
         System.out.println("source : " + source);
         System.out.println("type : " + type);
     }
+    public Triple[] toTriple() {
+        /// de sau
+        System.out.println("To Triple");
+        Triple[] triples = null;
+        return triples;
+    }
 }

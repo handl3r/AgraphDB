@@ -2,9 +2,9 @@ import java.util.Date;
 
 public class Source {
     private String link;
-    private Date time;
+    private String time;
 
-    public Source(String link, Date time) {
+    public Source(String link, String time) {
         this.link = link;
         this.time = time;
 
@@ -14,7 +14,7 @@ public class Source {
         return this.link;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return this.time;
     }
 }
