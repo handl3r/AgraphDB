@@ -58,9 +58,10 @@ public class ParentObject {
         System.out.println("id : " + id);
         System.out.println("label : " + label);
         System.out.println("description : " + description);
-        System.out.println("source : "+ source.getLink() + source.getTime());
+        System.out.println("source : " + source.getLink() + source.getTime());
         System.out.println("type : " + type);
     }
+
     public Triple[] toTriple() {
         /// de sau
         System.out.println("To Triple");

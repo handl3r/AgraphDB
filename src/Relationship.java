@@ -48,8 +48,8 @@ public class Relationship {
 
                     Event event = null;
 
-                    Relationship relationship = new Relationship(person,event,type);
-                    
+                    Relationship relationship = new Relationship(person, event, type);
+
                     SaveToDB saveToDB = new SaveToDB();// put triple to DB
                     saveToDB.putTripleToDB(relationship);
                 }
@@ -63,7 +63,8 @@ public class Relationship {
         }
 
     }
-    public Triple[] toTriple(){
+
+    public Triple[] toTriple() {
         /// de sau
         return null;
     }

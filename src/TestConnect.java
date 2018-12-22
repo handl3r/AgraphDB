@@ -21,10 +21,10 @@ public class TestConnect {
 
     public void example1() {
         System.out.println("xx");
-        AGServer server = new AGServer(SERVER_URL,USERNAME,PASSWORD);
-        System.out.println("Available catalogs: "+ server.listCatalogs());
+        AGServer server = new AGServer(SERVER_URL, USERNAME, PASSWORD);
+        System.out.println("Available catalogs: " + server.listCatalogs());
         AGCatalog catalog = server.getRootCatalog();
-        AGRepository repository = new AGRepository(catalog,REPOSITORY_ID);
+        AGRepository repository = new AGRepository(catalog, REPOSITORY_ID);
         System.out.println("oke1");
         AGRepositoryConnection connection = repository.getConnection();
         System.out.println("oke2");

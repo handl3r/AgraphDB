@@ -1,5 +1,5 @@
 public class Query {
-    public static void start(){
+    public static void start() {
         System.out.println("query call done!!");
     }
 }

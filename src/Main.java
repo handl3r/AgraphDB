@@ -16,7 +16,8 @@ public class Main {
             case 2: {
                 Query.start();
             }
-            default: break;
+            default:
+                break;
 
         }
     }

@@ -21,8 +21,8 @@ public class Country extends ParentObject {
     @Override
     public void displayInfor() {
         super.displayInfor();
-        if (population != -1 )
-        System.out.println("population : " + population);
+        if (population != -1)
+            System.out.println("population : " + population);
         System.out.println("----");
     }
 }

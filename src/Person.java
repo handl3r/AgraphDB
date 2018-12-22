@@ -1,6 +1,6 @@
 import org.apache.jena.base.Sys;
 
-public class Person extends ParentObject{
+public class Person extends ParentObject {
     private int age = -1; // id age = -1 , it's nothing
     private String nationality;
 
@@ -43,10 +43,10 @@ public class Person extends ParentObject{
     @Override
     public void displayInfor() {
         super.displayInfor();
-        if(age != -1 )
+        if (age != -1)
             System.out.println("age : " + age);
         if (nationality != null)
-            System.out.println("nationnality : " + nationality );
+            System.out.println("nationnality : " + nationality);
         System.out.println("----");
     }
 }

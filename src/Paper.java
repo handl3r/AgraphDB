@@ -8,7 +8,8 @@ public class Paper {
         this.parentObjects = parentObjects;
         this.relationships = relationships;
     }
-    public void showInfor(){
+
+    public void showInfor() {
         System.out.println("OBJECT0 :");
         parentObjects[0].displayInfor();
         System.out.println("HAVE RELATIONSHIP :");

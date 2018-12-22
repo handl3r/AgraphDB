@@ -3,7 +3,8 @@ public class HandleObject {
         return null;
         //
     }
-    public void pushToDB(Triple[] triples){
+
+    public void pushToDB(Triple[] triples) {
         // de sau
     }
 

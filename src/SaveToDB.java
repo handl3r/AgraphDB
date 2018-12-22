@@ -1,6 +1,6 @@
 public class SaveToDB {
 
-    public void putTripleToDB(Relationship relationship){
+    public void putTripleToDB(Relationship relationship) {
 
     }
 }
