@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Relationship {
     private String type;
     private ParentObject subject;
@@ -37,35 +39,37 @@ public class Relationship {
         this.object = object;
     }
 
-    public void initDate(String type) {
-        switch (type) {
-            case "a":
-                int numberObject = 1000;
-                for (int i = 1; i <= numberObject; i++) {
-                    //take data from file
+//    public void initDate(String type) {
+//        switch (type) {
+//            case "a":
+//                int numberObject = 1000;
+//                for (int i = 1; i <= numberObject; i++) {
+//                    //take data from file
+//
+//                    Person person = null;
+//
+//                    Event event = null;
+//
+//                    Relationship relationship = new Relationship(person, event, type);
+//
+//                    SaveToDB saveToDB = new SaveToDB();// put triple to DB
+//                    saveToDB.putTripleToDB(relationship);
+//                }
+//                break;
+//            case "b":
+//                //...
+//                break;
+//            case "c":
+//                //...
+//                break;
+//        }
+//
+//    }
 
-                    Person person = null;
-
-                    Event event = null;
-
-                    Relationship relationship = new Relationship(person, event, type);
-
-                    SaveToDB saveToDB = new SaveToDB();// put triple to DB
-                    saveToDB.putTripleToDB(relationship);
-                }
-                break;
-            case "b":
-                //...
-                break;
-            case "c":
-                //...
-                break;
-        }
-
-    }
-
-    public Triple[] toTriple() {
-        /// de sau
-        return null;
+    public Triple toTriple() {
+        String IDString1 = subject.getIDString();
+        String IDString2 = object.getIDString();
+        Triple triple = new Triple(IDString1,type,IDString2);
+        return triple;
     }
 }

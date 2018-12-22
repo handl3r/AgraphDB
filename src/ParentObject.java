@@ -1,3 +1,6 @@
+import java.awt.*;
+import java.util.ArrayList;
+
 public class ParentObject {
     private int id;
     private String label;
@@ -62,10 +65,19 @@ public class ParentObject {
         System.out.println("type : " + type);
     }
 
-    public Triple[] toTriple() {
-        /// de sau
-        System.out.println("To Triple");
-        Triple[] triples = null;
+    public ArrayList toTriple() {
+        ArrayList<Triple> triples = new ArrayList<Triple>();
+        String id = label+getId();
+        String source = this.source.getLink()+"|"+this.source.getTime();
+        Triple triple1 = new Triple(id,"hasProperty",label);
+        Triple triple2 = new Triple(id ,"hasProperty",description);
+        Triple triple3 = new Triple(id, "hasProperty", source);
+        triples.add(triple1);
+        triples.add(triple2);
+        triples.add(triple3);
         return triples;
+    }
+    public String getIDString(){
+        return label+id;
     }
 }

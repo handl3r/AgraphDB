@@ -4,7 +4,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.lang.Object;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.logging.SimpleFormatter;
 
@@ -16,6 +18,8 @@ import org.json.simple.parser.JSONParser;
 import org.apache.jena.atlas.json.JSON;
 import org.json.simple.parser.ParseException;
 import org.mapdb.Atomic;
+
+import javax.swing.text.html.HTMLDocument;
 
 public class GenPaper {
     static int CURRENT_PAPER_ID = 0;
@@ -81,7 +85,7 @@ public class GenPaper {
             Random random = new Random();
 
             JSONObject jsonObject = (JSONObject) jsonArray.get(random.nextInt(1000));
-            String label = (String) jsonObject.get("label") + "|" + paper_id;
+            String label = (String) jsonObject.get("label");
             String description = (String) jsonObject.get("description");
             Long age = (Long) jsonObject.get("age");
             Integer ageInt = age.intValue();
@@ -112,7 +116,7 @@ public class GenPaper {
 
             JSONObject jsonObject = (JSONObject) jsonArray.get(random.nextInt(1000));
             String label1 = (String) jsonObject.get("label1");
-            String label2 = String.valueOf(jsonObject.get("label2")) + "|" + paper_id;
+            String label2 = String.valueOf(jsonObject.get("label2"));
             String label = "Launches new product: " + label1 + label2;
             String description = (String) jsonObject.get("description");
             event = new Event(paper_id, label, description, source, "event");
@@ -139,7 +143,7 @@ public class GenPaper {
             Random random = new Random();
 
             JSONObject jsonObject = (JSONObject) jsonArray.get(random.nextInt(1000));
-            String label = jsonObject.get("label") + "|" + paper_id;
+            String label = (String) jsonObject.get("label");
             String country = (String) jsonObject.get("country");
             String description = (String) jsonObject.get("description");
             location = new Location(paper_id, label, description, source, "location", country);
@@ -158,15 +162,13 @@ public class GenPaper {
 
     public static void main(String[] args) {
 
-//        Source source = genSource(CURRENT_PAPER_ID);
-//        Person person = genPerson(CURRENT_PAPER_ID,source);
-//        Event event = genEvent(CURRENT_PAPER_ID,source);
-//        Location location = genLocation(CURRENT_PAPER_ID,source);
-//        person.displayInfor();
-//        event.displayInfor();
-//        location.displayInfor();
         Paper paper = genTypeA();
         paper.showInfor();
+        ArrayList arrayList = paper.toTriple();
+        Iterator<Triple> iterator = arrayList.iterator();
+        while(iterator.hasNext()){
+            iterator.next().showInfor();
+        }
 
     }
 

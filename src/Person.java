@@ -1,5 +1,8 @@
 import org.apache.jena.base.Sys;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class Person extends ParentObject {
     private int age = -1; // id age = -1 , it's nothing
     private String nationality;
@@ -48,5 +51,29 @@ public class Person extends ParentObject {
         if (nationality != null)
             System.out.println("nationnality : " + nationality);
         System.out.println("----");
+    }
+    @Override
+    public ArrayList toTriple(){
+        ArrayList triples = super.toTriple();
+        String IDString = getIDString();
+        if (age != -1){
+            Triple triple1 = new Triple(IDString, "hasProperty", String.valueOf(age));
+            triples.add(triple1);
+        }
+        if(nationality != null){
+            Triple triple2 = new Triple(IDString,"hasProperty",nationality);
+            triples.add(triple2);
+        }
+        return triples;
+    }
+
+    public static void main(String[] args) {
+        Source source = GenPaper.genSource(1);
+        Person person = new Person(1,"thai","abc",source,"human",20,"VietNam");
+        ArrayList arrayList = person.toTriple();
+        Iterator<Triple> iterator = arrayList.iterator();
+        while(iterator.hasNext()){
+            iterator.next().showInfor();
+        }
     }
 }

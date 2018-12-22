@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Location extends ParentObject {
     private String country;
 
@@ -24,5 +26,15 @@ public class Location extends ParentObject {
         if (country != null)
             System.out.println("country : " + country);
         System.out.println("----");
+    }
+    @Override
+    public ArrayList toTriple(){
+        ArrayList triples = super.toTriple();
+        String IDString = getIDString();
+        if (country != null){
+            Triple triple1 = new Triple(IDString,"hasProperty",country);
+            triples.add(triple1);
+        }
+        return  triples;
     }
 }
