@@ -47,5 +47,6 @@ public class Person extends ParentObject{
             System.out.println("age : " + age);
         if (nationality != null)
             System.out.println("nationnality : " + nationality );
+        System.out.println("----");
     }
 }

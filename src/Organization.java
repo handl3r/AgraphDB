@@ -46,6 +46,7 @@ public class Organization extends ParentObject {
             System.out.println("headquater : " + headquater);
         if (since != -1)
             System.out.println("since : " + since);
+        System.out.println("----");
 
     }
 }

@@ -23,6 +23,6 @@ public class Location extends ParentObject {
         super.displayInfor();
         if (country != null)
             System.out.println("country : "+ country);
-
+        System.out.println("----");
     }
 }
