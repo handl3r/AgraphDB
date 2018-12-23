@@ -67,6 +67,7 @@ public class Person extends ParentObject {
             Triple triple2 = new Triple(IDString,"hasProperty",nationality);
             triples.add(triple2);
         }
+
         return triples;
     }
 

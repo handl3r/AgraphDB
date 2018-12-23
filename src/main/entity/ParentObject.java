@@ -75,9 +75,11 @@ public class ParentObject {
         Triple triple1 = new Triple(id,"hasProperty",label);
         Triple triple2 = new Triple(id ,"hasProperty",description);
         Triple triple3 = new Triple(id, "hasProperty", source);
+        Triple triple4 = new Triple(id,"typeOf",this.getType());
         triples.add(triple1);
         triples.add(triple2);
         triples.add(triple3);
+        triples.add(triple4);
         return triples;
     }
     public String getIDString(){

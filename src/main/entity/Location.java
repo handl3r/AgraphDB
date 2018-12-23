@@ -39,6 +39,8 @@ public class Location extends ParentObject {
             Triple triple1 = new Triple(IDString,"hasProperty",country);
             triples.add(triple1);
         }
+
+
         return  triples;
     }
 }
