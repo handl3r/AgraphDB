@@ -2,22 +2,22 @@ public class Organization extends ParentObject {
     private String headquater;
     private int since = -1; // if since = -1 , it's nothing
 
-    public Organization(int id, String label, String description, Source source, String type) {
+    public Organization(String id, String label, String description, Source source, String type) {
         super(id, label, description, source, type);
     }
 
-    public Organization(int id, String label, String description, Source source, String type, String headquater, int since) {
+    public Organization(String id, String label, String description, Source source, String type, String headquater, int since) {
         super(id, label, description, source, type);
         this.headquater = headquater;
         this.since = since;
     }
 
-    public Organization(int id, String label, String description, Source source, String type, String headquater) {
+    public Organization(String id, String label, String description, Source source, String type, String headquater) {
         super(id, label, description, source, type);
         this.headquater = headquater;
     }
 
-    public Organization(int id, String label, String description, Source source, String type, int since) {
+    public Organization(String id, String label, String description, Source source, String type, int since) {
         super(id, label, description, source, type);
         this.since = since;
     }

@@ -3,11 +3,11 @@ import java.util.ArrayList;
 public class Location extends ParentObject {
     private String country;
 
-    public Location(int id, String label, String description, Source source, String type) {
+    public Location(String id, String label, String description, Source source, String type) {
         super(id, label, description, source, type);
     }
 
-    public Location(int id, String label, String description, Source source, String type, String country) {
+    public Location(String id, String label, String description, Source source, String type, String country) {
         super(id, label, description, source, type);
         this.country = country;
     }

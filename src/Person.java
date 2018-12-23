@@ -7,22 +7,22 @@ public class Person extends ParentObject {
     private int age = -1; // id age = -1 , it's nothing
     private String nationality;
 
-    public Person(int id, String label, String description, Source source, String type) {
+    public Person(String id, String label, String description, Source source, String type) {
         super(id, label, description, source, type);
     }
 
-    public Person(int id, String label, String description, Source source, String type, int age, String nationality) {
+    public Person(String id, String label, String description, Source source, String type, int age, String nationality) {
         super(id, label, description, source, type);
         this.age = age;
         this.nationality = nationality;
     }
 
-    public Person(int id, String label, String description, Source source, String type, int age) {
+    public Person(String id, String label, String description, Source source, String type, int age) {
         super(id, label, description, source, type);
         this.age = age;
     }
 
-    public Person(int id, String label, String description, Source source, String type, String nationality) {
+    public Person(String id, String label, String description, Source source, String type, String nationality) {
         super(id, label, description, source, type);
         this.nationality = nationality;
     }
@@ -69,7 +69,7 @@ public class Person extends ParentObject {
 
     public static void main(String[] args) {
         Source source = GenPaper.genSource(1);
-        Person person = new Person(1,"thai","abc",source,"human",20,"VietNam");
+        Person person = new Person("1","thai","abc",source,"human",20,"VietNam");
         ArrayList arrayList = person.toTriple();
         Iterator<Triple> iterator = arrayList.iterator();
         while(iterator.hasNext()){

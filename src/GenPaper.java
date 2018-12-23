@@ -89,9 +89,10 @@ public class GenPaper {
             String description = (String) jsonObject.get("description");
             Long age = (Long) jsonObject.get("age");
             Integer ageInt = age.intValue();
+            String id = label.replaceAll("\\s+","") + paper_id;
 
             String nationality = (String) jsonObject.get("nationality");
-            person = new Person(paper_id, label, description, source, "person", ageInt, nationality);
+            person = new Person(id, label, description, source, "person", ageInt, nationality);
 
 
         } catch (FileNotFoundException e) {
@@ -119,7 +120,9 @@ public class GenPaper {
             String label2 = String.valueOf(jsonObject.get("label2"));
             String label = "Launches new product: " + label1 + label2;
             String description = (String) jsonObject.get("description");
-            event = new Event(paper_id, label, description, source, "event");
+            String id = label.replaceAll("\\s+","") + paper_id;
+
+            event = new Event(id, label, description, source, "event");
 
 
         } catch (FileNotFoundException e) {
@@ -146,7 +149,8 @@ public class GenPaper {
             String label = (String) jsonObject.get("label");
             String country = (String) jsonObject.get("country");
             String description = (String) jsonObject.get("description");
-            location = new Location(paper_id, label, description, source, "location", country);
+            String id = label.replaceAll("\\s+","") + paper_id;
+            location = new Location(id, label, description, source, "location", country);
 
 
         } catch (FileNotFoundException e) {

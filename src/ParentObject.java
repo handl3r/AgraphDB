@@ -2,13 +2,13 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class ParentObject {
-    private int id;
+    private String id;
     private String label;
     private String description;
     private Source source;
     private String type;
 
-    public ParentObject(int id, String label, String description, Source source, String type) {
+    public ParentObject(String id, String label, String description, Source source, String type) {
         this.id = id;
         this.label = label;
         this.description = description;
@@ -16,7 +16,7 @@ public class ParentObject {
         this.type = type;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -36,7 +36,7 @@ public class ParentObject {
         return type;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -67,7 +67,7 @@ public class ParentObject {
 
     public ArrayList toTriple() {
         ArrayList<Triple> triples = new ArrayList<Triple>();
-        String id = label+getId();
+        String id = getId();
         String source = this.source.getLink()+"|"+this.source.getTime();
         Triple triple1 = new Triple(id,"hasProperty",label);
         Triple triple2 = new Triple(id ,"hasProperty",description);
