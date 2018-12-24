@@ -12,6 +12,7 @@ import java.util.Random;
 
 import main.database.Triple;
 import main.entity.*;
+import org.apache.jena.atlas.test.Gen;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -24,11 +25,7 @@ public class GenPaper {
 
     public static Paper genTypeA() {
         int paper_id = ++CURRENT_PAPER_ID;
-//        String link = "http://ex/";
-//        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-//        Date date1 = new Date();
-//
-//        main.entity.Source source = new main.entity.Source(link+ paper_id,format.format(date1));
+
         Source source = genSource(paper_id);
         Person person1 = GenPaper.genPerson(paper_id, source);
         Event event1 = GenPaper.genEvent(paper_id, source);
@@ -41,6 +38,40 @@ public class GenPaper {
         return paper;
 
     }
+
+    public static Paper genTypeB() {
+        int paper_id = ++CURRENT_PAPER_ID;
+
+        Source source = genSource(paper_id);
+        Person person1 = GenPaper.genPerson(paper_id, source);
+        Country country= GenPaper.genCountry(paper_id, source);
+        Time time = GenPaper.genTime(paper_id,source);
+        Relationship rel1 = new Relationship(person1,country, "visit");
+        Relationship rel2 = new Relationship(country,time, "on");
+        Relationship[] relationships = {rel1,rel2};
+        ParentObject[] parentObjects = {person1, country,time};
+        Paper paper = new Paper(parentObjects, relationships);
+        return paper;
+
+    }
+    public static Paper genTypeC() {
+        int paper_id = ++CURRENT_PAPER_ID;
+
+        Source source = genSource(paper_id);
+        Organization organization = GenPaper.genOrganization(paper_id, source);
+        Event event = GenPaper.genEvent(paper_id,source);
+        Location location = GenPaper.genLocation(paper_id,source);
+
+        Relationship rel1 = new Relationship(organization,event, "organize");
+        Relationship rel2 = new Relationship(event,location, "in");
+        Relationship[] relationships = {rel1,rel2};
+        ParentObject[] parentObjects = {organization,event,location};
+        Paper paper = new Paper(parentObjects, relationships);
+        return paper;
+
+    }
+
+
 
     public static Source genSource(int paper_id) {
         JSONParser parser = new JSONParser();
@@ -161,10 +192,101 @@ public class GenPaper {
 
         return location;
     }
+    public static Country genCountry(int paper_id, Source source) {
+        Country country = null;
+        JSONParser parser = new JSONParser();
+        try {
+            FileReader fileReader = new FileReader("data/COUNTRY.json");
+            Object object = parser.parse(fileReader);
+            JSONArray jsonArray = (JSONArray) object;
+            Random random = new Random();
+
+            JSONObject jsonObject = (JSONObject) jsonArray.get(random.nextInt(1000));
+            String description = (String) jsonObject.get("description");
+            String label = (String) jsonObject.get("label");
+            Double population = (Double) jsonObject.get("population");
+            Integer populationInt = population.intValue();
+            String id = label.replaceAll("\\s+", "") + paper_id;
+            country = new Country(id, label, description, source, "country",populationInt);
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return country;
+    }
+    public static Time genTime(int paper_id, Source source) {
+        Time time = null;
+        JSONParser parser = new JSONParser();
+        try {
+            FileReader fileReader = new FileReader("data/TIME.json");
+            Object object = parser.parse(fileReader);
+            JSONArray jsonArray = (JSONArray) object;
+            Random random = new Random();
+
+            JSONObject jsonObject = (JSONObject) jsonArray.get(random.nextInt(1000));
+
+            String description = (String) jsonObject.get("hour");
+            String label = (String) jsonObject.get("label");
+            String id = label.replaceAll("\\s+", "") + paper_id;
+
+            time = new Time(id, label, description, source, "time");
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return time;
+    }
+
+    public static Organization genOrganization(int paper_id, Source source) {
+        Organization organization = null;
+        JSONParser parser = new JSONParser();
+        try {
+            FileReader fileReader = new FileReader("data/ORGANIZATION.json");
+            Object object = new Object();
+            object = parser.parse(fileReader);
+            JSONArray jsonArray = (JSONArray) object;
+            Random random = new Random();
+
+            JSONObject jsonObject = (JSONObject) jsonArray.get(random.nextInt(1000));
+            String label = (String) jsonObject.get("label");
+            String description = (String) jsonObject.get("description");
+            String headquater = (String) jsonObject.get("headquater");
+            String since = String.valueOf(jsonObject.get("since"));
+            int sinceInt = Integer.parseInt(since);
+            String id = label.replaceAll("\\s+", "") + paper_id;
+            organization = new Organization(id, label, description, source, "organization",headquater,sinceInt);
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return organization;
+    }
+
+
+
+
 
     public static void main(String[] args) {
 
-        Paper paper = genTypeA();
+        Paper paper = genTypeC();
         paper.showInfor();
         ArrayList arrayList = paper.toTriple();
         Iterator<Triple> iterator = arrayList.iterator();

@@ -83,6 +83,6 @@ public class ParentObject {
         return triples;
     }
     public String getIDString(){
-        return label+id;
+        return id;
     }
 }

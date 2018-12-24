@@ -8,14 +8,28 @@ import java.util.Iterator;
 
 public class Simulator {
     public static void start() {
-        Paper paper = GenPaper.genTypeA();
-        ArrayList triples = paper.toTriple();
-        Iterator<Triple> iterator = triples.iterator();
+        Paper paper = null;
+        ArrayList triples = null;
+        Iterator<Triple> iterator ;
         Database database = new Database();
-        while (iterator.hasNext()) {
+        for (int i =0 ;i <=99; i++){
+            paper = GenPaper.genTypeA();
+            triples = paper.toTriple();
+            iterator = triples.iterator();
+            while (iterator.hasNext()) {
             database.saveTripleToDB(iterator.next());
+
+          }
+            database.storageModel();
         }
-        database.storageModel();
+//        Paper paper = GenPaper.genTypeA();
+//        ArrayList triples = paper.toTriple();
+//        Iterator<Triple> iterator = triples.iterator();
+//        Database database = new Database();
+//        while (iterator.hasNext()) {
+//            database.saveTripleToDB(iterator.next());
+//        }
+//        database.storageModel();
 
         System.out.println("main.simulator.Simulator call done");
     }
