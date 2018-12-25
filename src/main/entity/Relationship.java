@@ -45,7 +45,7 @@ public class Relationship {
     public Triple toTriple() {
         String IDString1 = subject.getIDString();
         String IDString2 = object.getIDString();
-        Triple triple = new Triple(IDString1,type,IDString2);
+        Triple triple = new Triple(IDString1, type, IDString2);
         return triple;
     }
 }

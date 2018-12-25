@@ -55,29 +55,21 @@ public class Person extends ParentObject {
             System.out.println("nationnality : " + nationality);
         System.out.println("----");
     }
+
     @Override
-    public ArrayList toTriple(){
+    public ArrayList toTriple() {
         ArrayList triples = super.toTriple();
         String IDString = getIDString();
-        if (age != -1){
+        if (age != -1) {
             Triple triple1 = new Triple(IDString, "age", String.valueOf(age));
             triples.add(triple1);
         }
-        if(nationality != null){
-            Triple triple2 = new Triple(IDString,"nationality",nationality);
+        if (nationality != null) {
+            Triple triple2 = new Triple(IDString, "nationality", nationality);
             triples.add(triple2);
         }
 
         return triples;
     }
 
-    public static void main(String[] args) {
-        Source source = GenPaper.genSource(1);
-        Person person = new Person("1","thai","abc",source,"human",20,"VietNam");
-        ArrayList arrayList = person.toTriple();
-        Iterator<Triple> iterator = arrayList.iterator();
-        while(iterator.hasNext()){
-            iterator.next().showInfor();
-        }
-    }
 }

@@ -37,7 +37,7 @@ public class Country extends ParentObject {
         ArrayList triples = super.toTriple();
 
         String IDString = getIDString();
-        if (population != -1){
+        if (population != -1) {
             Triple triple1 = new Triple(IDString, "population", String.valueOf(population));
             triples.add(triple1);
         }

@@ -60,14 +60,14 @@ public class Organization extends ParentObject {
     public ArrayList toTriple() {
         ArrayList triples = super.toTriple();
         String IDString = getIDString();
-        if (since != -1){
-            Triple triple1 = new Triple(IDString,"since",String.valueOf(since));
+        if (since != -1) {
+            Triple triple1 = new Triple(IDString, "since", String.valueOf(since));
             triples.add(triple1);
         }
-        Triple triple2 = new Triple(IDString,"headquater",headquater);
+        Triple triple2 = new Triple(IDString, "headquater", headquater);
         triples.add(triple2);
 
 
-        return  triples;
+        return triples;
     }
 }

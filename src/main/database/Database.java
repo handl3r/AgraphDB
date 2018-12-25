@@ -17,7 +17,7 @@ public class Database {
     private AGValueFactory valueFactory;
     private ArrayList<String> listProps = new ArrayList<String>();
 
-    public Database(){
+    public Database() {
         this.listProps.add("source");
         this.listProps.add("description");
         this.listProps.add("label");
@@ -42,23 +42,21 @@ public class Database {
 
     public void saveTripleToDB(Triple triple) {
         if (triple.getPredicate().equals("typeOf")) {
-            IRI s = valueFactory.createIRI(Configue.ENTITY_LINK,triple.getSubject());
-            IRI o = valueFactory.createIRI(Configue.CLASS_LINK,triple.getObject());
-            treeModel.add(s,RDF.TYPE,o);
-        }
-        else if (listProps.contains(triple.getPredicate())) {
-            IRI s = valueFactory.createIRI(Configue.ENTITY_LINK,triple.getSubject());
-            IRI p = valueFactory.createIRI(Configue.PROPERTIES_LINK,triple.getPredicate());
+            IRI s = valueFactory.createIRI(Configue.ENTITY_LINK, triple.getSubject());
+            IRI o = valueFactory.createIRI(Configue.CLASS_LINK, triple.getObject());
+            treeModel.add(s, RDF.TYPE, o);
+        } else if (listProps.contains(triple.getPredicate())) {
+            IRI s = valueFactory.createIRI(Configue.ENTITY_LINK, triple.getSubject());
+            IRI p = valueFactory.createIRI(Configue.PROPERTIES_LINK, triple.getPredicate());
             Literal o = valueFactory.createLiteral(triple.getObject());
-            treeModel.add(s,p,o);
+            treeModel.add(s, p, o);
+        } else {
+            IRI s = valueFactory.createIRI(Configue.ENTITY_LINK, triple.getSubject());
+            IRI p = valueFactory.createIRI(Configue.RELATIONSHIP_LINK, triple.getPredicate());
+            IRI o = valueFactory.createIRI(Configue.ENTITY_LINK, triple.getObject());
+            treeModel.add(s, p, o);
         }
-        else {
-            IRI s = valueFactory.createIRI(Configue.ENTITY_LINK,triple.getSubject());
-            IRI p = valueFactory.createIRI(Configue.RELATIONSHIP_LINK,triple.getPredicate());
-            IRI o = valueFactory.createIRI(Configue.ENTITY_LINK,triple.getObject());
-            treeModel.add(s,p,o);
-        }
-        if(treeModel.size() > 100) storageModel();
+        if (treeModel.size() > 100) storageModel();
     }
 
     public void storageModel() {

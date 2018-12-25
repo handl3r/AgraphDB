@@ -18,36 +18,34 @@ public class Connector {
         this.serverURL = Configue.SERVER_URL;
         this.user = Configue.USERNAME;
         this.password = Configue.PASSWORD;
-        this.server = new AGServer(this.serverURL,this.user,this.password);
+        this.server = new AGServer(this.serverURL, this.user, this.password);
         this.catalog = server.getRootCatalog();
     }
 
-    public Connector(String serverURL,String user ,String pass) {
+    public Connector(String serverURL, String user, String pass) {
         this.serverURL = serverURL;
         this.user = user;
         this.password = pass;
-        this.server = new AGServer(this.serverURL,this.user,this.password);
+        this.server = new AGServer(this.serverURL, this.user, this.password);
         this.catalog = server.getRootCatalog();
     }
 
     public AGRepositoryConnection createConnect() {
         String repositoryID = Configue.REPOSITORY_ID;
-        if(catalog.hasRepository(repositoryID)) {
+        if (catalog.hasRepository(repositoryID)) {
             repository = catalog.openRepository(repositoryID);
             connection = repository.getConnection();
-        }
-        else {
+        } else {
             createRepo(repositoryID);
         }
         return connection;
     }
 
-    public AGRepositoryConnection getConnection(String repoID){
-        if(catalog.hasRepository(repoID)){
+    public AGRepositoryConnection getConnection(String repoID) {
+        if (catalog.hasRepository(repoID)) {
             repository = catalog.openRepository(repoID);
             connection = repository.getConnection();
-        }
-        else{
+        } else {
             System.out.println("Khong the ket noi !!! ( Co the repository khong ton tai) ");
         }
         return connection;
@@ -64,7 +62,7 @@ public class Connector {
     }
 
     public void closeConnect() {
-        if(connection == null) return;
+        if (connection == null) return;
         connection.close();
         repository.shutDown();
     }

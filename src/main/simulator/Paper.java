@@ -1,6 +1,5 @@
 package main.simulator;
 
-import main.database.Triple;
 import main.entity.ParentObject;
 import main.entity.Relationship;
 

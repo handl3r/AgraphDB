@@ -2,7 +2,6 @@ package main;
 
 import main.query.Query;
 import main.simulator.Simulator;
-import org.apache.jena.base.Sys;
 
 import java.util.Scanner;
 
@@ -18,15 +17,15 @@ public class Main {
             Scanner input = new Scanner(System.in);
             number = input.nextInt();
 
-            switch (number){
-                case 0:{
+            switch (number) {
+                case 0: {
                     System.exit(0);
                 }
-                case 1:{
+                case 1: {
                     Simulator.start();
                     break;
                 }
-                case 2:{
+                case 2: {
                     do {
                         System.out.println("0.back");
                         System.out.println("1.Basic Query");
@@ -35,14 +34,14 @@ public class Main {
                         Query query = new Query();
                         if (number == 1) query.basicQuery();
                         if (number == 2) query.complexQuery();
-                    }while(number != 0);
+                    } while (number != 0);
                     break;
                 }
                 default:
                     break;
             }
 
-        }while (true);
+        } while (true);
     }
 
 

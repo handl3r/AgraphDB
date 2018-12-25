@@ -31,16 +31,17 @@ public class Location extends ParentObject {
             System.out.println("country : " + country);
         System.out.println("----");
     }
+
     @Override
-    public ArrayList toTriple(){
+    public ArrayList toTriple() {
         ArrayList triples = super.toTriple();
         String IDString = getIDString();
-        if (country != null){
-            Triple triple1 = new Triple(IDString,"country",country);
+        if (country != null) {
+            Triple triple1 = new Triple(IDString, "country", country);
             triples.add(triple1);
         }
 
 
-        return  triples;
+        return triples;
     }
 }

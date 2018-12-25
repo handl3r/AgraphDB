@@ -1,6 +1,5 @@
 package main.entity;
 
-import java.util.Date;
 
 public class Source {
     private String link;

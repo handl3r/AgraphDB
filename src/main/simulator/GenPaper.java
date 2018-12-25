@@ -89,35 +89,35 @@ public class GenPaper {
 
         Source source = genSource(paper_id);
         Person person1 = GenPaper.genPerson(paper_id, source);
-        Country country= GenPaper.genCountry(paper_id, source);
-        Time time = GenPaper.genTime(paper_id,source);
-        Relationship rel1 = new Relationship(person1,country, "visit");
-        Relationship rel2 = new Relationship(country,time, "on");
-        Relationship[] relationships = {rel1,rel2};
-        ParentObject[] parentObjects = {person1, country,time};
+        Country country = GenPaper.genCountry(paper_id, source);
+        Time time = GenPaper.genTime(paper_id, source);
+        Relationship rel1 = new Relationship(person1, country, "visit");
+        Relationship rel2 = new Relationship(country, time, "on");
+        Relationship[] relationships = {rel1, rel2};
+        ParentObject[] parentObjects = {person1, country, time};
         Paper paper = new Paper(parentObjects, relationships);
         return paper;
 
     }
+
     public static Paper genTypeC() {
         int paper_id = ++CURRENT_PAPER_ID;
 
         Source source = genSource(paper_id);
         Organization organization = GenPaper.genOrganization(paper_id, source);
-        Event event = GenPaper.genEvent(paper_id,source);
-        Time time = GenPaper.genTime(paper_id,source);
-        Location location = GenPaper.genLocation(paper_id,source);
+        Event event = GenPaper.genEvent(paper_id, source);
+        Time time = GenPaper.genTime(paper_id, source);
+        Location location = GenPaper.genLocation(paper_id, source);
 
-        Relationship rel1 = new Relationship(organization,event, "organize");
-        Relationship rel2 = new Relationship(event,location, "in");
-        Relationship rel3 = new Relationship(event,time,"on");
-        Relationship[] relationships = {rel1,rel2,rel3};
-        ParentObject[] parentObjects = {organization,event,location,time};
+        Relationship rel1 = new Relationship(organization, event, "organize");
+        Relationship rel2 = new Relationship(event, location, "in");
+        Relationship rel3 = new Relationship(event, time, "on");
+        Relationship[] relationships = {rel1, rel2, rel3};
+        ParentObject[] parentObjects = {organization, event, location, time};
         Paper paper = new Paper(parentObjects, relationships);
         return paper;
 
     }
-
 
 
     public static Source genSource(int paper_id) {
@@ -194,6 +194,7 @@ public class GenPaper {
 
         return location;
     }
+
     public static Country genCountry(int paper_id, Source source) {
         Country country = null;
         try {
@@ -205,7 +206,7 @@ public class GenPaper {
             Double population = (Double) jsonObject.get("population");
             Integer populationInt = population.intValue();
             String id = label.replaceAll("\\s+", "") + paper_id;
-            country = new Country(id, label, description, source, "country",populationInt);
+            country = new Country(id, label, description, source, "country", populationInt);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -213,6 +214,7 @@ public class GenPaper {
 
         return country;
     }
+
     public static Time genTime(int paper_id, Source source) {
         Time time = null;
         try {
@@ -245,7 +247,7 @@ public class GenPaper {
             String since = String.valueOf(jsonObject.get("since"));
             int sinceInt = Integer.parseInt(since);
             String id = label.replaceAll("\\s+", "") + paper_id;
-            organization = new Organization(id, label, description, source, "organization",headquater,sinceInt);
+            organization = new Organization(id, label, description, source, "organization", headquater, sinceInt);
 
         } catch (Exception e) {
             e.printStackTrace();
