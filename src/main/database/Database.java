@@ -62,10 +62,8 @@ public class Database {
     }
 
     public void storageModel() {
-        System.out.println(treeModel.size());
         connection.add(treeModel);
         treeModel.clear();
-        System.out.println(connection.size());
-        System.out.println("================================================================");
+        System.out.println("Size: " + connection.size());
     }
 }

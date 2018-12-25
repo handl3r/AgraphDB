@@ -3,7 +3,7 @@ package main.database;
 public class Configue {
     public static final String SERVER_URL = "http://localhost:10035";
     public static final String CATALOG_ID = "java-catalog";
-    public static final String REPOSITORY_ID = "OOP2018";
+    public static final String REPOSITORY_ID = "OOP20182";
     public static final String USERNAME = "test";
     public static final String PASSWORD = "buixuanthai";
 

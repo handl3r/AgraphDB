@@ -42,6 +42,17 @@ public class Connector {
         return connection;
     }
 
+    public AGRepositoryConnection getConnection(String repoID){
+        if(catalog.hasRepository(repoID)){
+            repository = catalog.openRepository(repoID);
+            connection = repository.getConnection();
+        }
+        else{
+            System.out.println("Khong the ket noi !!! ( Co the repository khong ton tai) ");
+        }
+        return connection;
+    }
+
     public void createRepo(String repositoryID) {
         repository = catalog.createRepository(repositoryID);
         repository.initialize();
