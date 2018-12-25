@@ -72,9 +72,9 @@ public class ParentObject {
         ArrayList<Triple> triples = new ArrayList<Triple>();
         String id = getId();
         String source = this.source.getLink()+"|"+this.source.getTime();
-        Triple triple1 = new Triple(id,"hasProperty",label);
-        Triple triple2 = new Triple(id ,"hasProperty",description);
-        Triple triple3 = new Triple(id, "hasProperty", source);
+        Triple triple1 = new Triple(id,"label",label);
+        Triple triple2 = new Triple(id ,"description",description);
+        Triple triple3 = new Triple(id, "source", source);
         Triple triple4 = new Triple(id,"typeOf",this.getType());
         triples.add(triple1);
         triples.add(triple2);

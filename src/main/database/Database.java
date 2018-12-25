@@ -8,12 +8,25 @@ import org.eclipse.rdf4j.model.Literal;
 import org.eclipse.rdf4j.model.impl.TreeModel;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class Database {
     private AGRepositoryConnection connection;
     private TreeModel treeModel = new TreeModel();
     private AGValueFactory valueFactory;
+    private ArrayList<String> listProps = new ArrayList<String>();
 
     public Database(){
+        this.listProps.add("source");
+        this.listProps.add("description");
+        this.listProps.add("label");
+        this.listProps.add("population");
+        this.listProps.add("country");
+        this.listProps.add("since");
+        this.listProps.add("headquater");
+        this.listProps.add("age");
+        this.listProps.add("nationality");
         Connector connector = new Connector();
         this.connection = connector.createConnect();
         this.valueFactory = connection.getValueFactory();
@@ -33,7 +46,7 @@ public class Database {
             IRI o = valueFactory.createIRI(Configue.CLASS_LINK,triple.getObject());
             treeModel.add(s,RDF.TYPE,o);
         }
-        else if (triple.getPredicate().equals("hasProperty")) {
+        else if (listProps.contains(triple.getPredicate())) {
             IRI s = valueFactory.createIRI(Configue.ENTITY_LINK,triple.getSubject());
             IRI p = valueFactory.createIRI(Configue.PROPERTIES_LINK,triple.getPredicate());
             Literal o = valueFactory.createLiteral(triple.getObject());

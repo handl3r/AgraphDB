@@ -60,11 +60,11 @@ public class Person extends ParentObject {
         ArrayList triples = super.toTriple();
         String IDString = getIDString();
         if (age != -1){
-            Triple triple1 = new Triple(IDString, "hasProperty", String.valueOf(age));
+            Triple triple1 = new Triple(IDString, "age", String.valueOf(age));
             triples.add(triple1);
         }
         if(nationality != null){
-            Triple triple2 = new Triple(IDString,"hasProperty",nationality);
+            Triple triple2 = new Triple(IDString,"nationality",nationality);
             triples.add(triple2);
         }
 

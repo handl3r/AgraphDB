@@ -1,5 +1,9 @@
 package main.entity;
 
+import main.database.Triple;
+
+import java.util.ArrayList;
+
 public class Country extends ParentObject {
     private int population = -1; // if population = -1 , it's nothing
 
@@ -26,5 +30,17 @@ public class Country extends ParentObject {
         if (population != -1)
             System.out.println("population : " + population);
         System.out.println("----");
+    }
+
+    @Override
+    public ArrayList toTriple() {
+        ArrayList triples = super.toTriple();
+
+        String IDString = getIDString();
+        if (population != -1){
+            Triple triple1 = new Triple(IDString, "population", String.valueOf(population));
+            triples.add(triple1);
+        }
+        return triples;
     }
 }

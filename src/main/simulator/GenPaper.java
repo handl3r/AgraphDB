@@ -60,12 +60,14 @@ public class GenPaper {
         Source source = genSource(paper_id);
         Organization organization = GenPaper.genOrganization(paper_id, source);
         Event event = GenPaper.genEvent(paper_id,source);
+        Time time = GenPaper.genTime(paper_id,source);
         Location location = GenPaper.genLocation(paper_id,source);
 
         Relationship rel1 = new Relationship(organization,event, "organize");
         Relationship rel2 = new Relationship(event,location, "in");
-        Relationship[] relationships = {rel1,rel2};
-        ParentObject[] parentObjects = {organization,event,location};
+        Relationship rel3 = new Relationship(event,time,"on");
+        Relationship[] relationships = {rel1,rel2,rel3};
+        ParentObject[] parentObjects = {organization,event,location,time};
         Paper paper = new Paper(parentObjects, relationships);
         return paper;
 

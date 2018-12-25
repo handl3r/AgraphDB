@@ -11,4 +11,5 @@ public class Configue {
     public static String ENTITY_LINK = "http://oop2018/entity/";
     public static String PROPERTIES_LINK = "http://oop2018/properties/";
     public static String RELATIONSHIP_LINK  = "http://oop2018/relationship/";
+
 }

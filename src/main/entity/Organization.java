@@ -1,5 +1,9 @@
 package main.entity;
 
+import main.database.Triple;
+
+import java.util.ArrayList;
+
 public class Organization extends ParentObject {
     private String headquater;
     private int since = -1; // if since = -1 , it's nothing
@@ -50,5 +54,20 @@ public class Organization extends ParentObject {
             System.out.println("since : " + since);
         System.out.println("----");
 
+    }
+
+    @Override
+    public ArrayList toTriple() {
+        ArrayList triples = super.toTriple();
+        String IDString = getIDString();
+        if (since != -1){
+            Triple triple1 = new Triple(IDString,"since",String.valueOf(since));
+            triples.add(triple1);
+        }
+        Triple triple2 = new Triple(IDString,"headquater",headquater);
+        triples.add(triple2);
+
+
+        return  triples;
     }
 }
