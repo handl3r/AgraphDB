@@ -14,6 +14,7 @@ public class Simulator {
         Iterator<Triple> iterator ;
         Database database = new Database();
         Scanner scanner = new Scanner(System.in);
+        GenPaper.initJSON();
         int N =0;
         int M = 0;
         float ratio;
