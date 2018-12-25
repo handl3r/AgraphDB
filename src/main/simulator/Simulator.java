@@ -12,16 +12,15 @@ public class Simulator {
         ArrayList triples = null;
         Iterator<Triple> iterator ;
         Database database = new Database();
-        for (int i =0 ;i <=99; i++){
+        for (int i =0 ;i <=500; i++){
             paper = GenPaper.genTypeA();
             triples = paper.toTriple();
             iterator = triples.iterator();
             while (iterator.hasNext()) {
             database.saveTripleToDB(iterator.next());
-
           }
-            database.storageModel();
         }
+        database.storageModel();
 //        Paper paper = GenPaper.genTypeA();
 //        ArrayList triples = paper.toTriple();
 //        Iterator<Triple> iterator = triples.iterator();

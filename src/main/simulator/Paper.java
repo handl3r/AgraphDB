@@ -32,7 +32,7 @@ public class Paper {
 //        Triple triple2 = relationships[1].toTriple();
 //        triples.add(triple1);
 //        triples.add(triple2);
-        System.out.println("Number of triples: " + triples.size());
+//        System.out.println("Number of triples: " + triples.size());
         return triples;
 
     }
